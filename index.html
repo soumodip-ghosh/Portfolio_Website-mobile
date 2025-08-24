@@ -22,13 +22,32 @@
         }
 
         :root {
-            --primary-color: #0a2a6e;
+            --primary-color: #0236a7;
             --secondary-color: #2a4497;
-            --accent-color: #3b82f6;
+            --nav-color: rgba(255, 255, 255, 0.8);
+            --accent-color: #022761;
             --text-primary: #141b24;
             --text-secondary: #656d7b;
-            --bg-light: #f8fafc;
+            --card-color: rgb(109, 166, 221);
+            --bg-light: #e7f1fc;
             --bg-white: #ffffff;
+            --text-black: #000000;
+            --toggle-bg: #000000;
+            --gradient: linear-gradient(135deg, #0d1f70 0%, #502679 100%);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #0d47c4;
+            --secondary-color: #112978;
+            --nav-color: #001433;
+            --accent-color: #022761;
+            --text-primary: #dadee4;
+            --text-secondary: #9da4b0;
+            --card-color: rgb(32, 111, 184);
+            --bg-light: #474758;
+            --bg-white: #0f1539;
+            --text-black: #ffffff;
+            --toggle-bg: #706e6e;
             --gradient: linear-gradient(135deg, #0d1f70 0%, #502679 100%);
         }
 
@@ -39,12 +58,90 @@
             overflow-x: hidden;
         }
 
+        /* contact button */
+        .contact-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .contact-button {
+            position: fixed;
+            bottom: -10px;
+            right: -10px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            z-index: 1001;
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .contact-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px var(--shadow-dark);
+        }
+
+        .contact-button.active {
+            background: var(--secondary-color);
+        }
+
+        .options {
+            margin-top: 10px;
+            flex-direction: column;
+            gap: 5px;
+            position: absolute;
+            right: 0;
+            bottom: 60px;
+            display: flex;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            }
+
+        .options.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .options .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 10px var(--shadow-dark);
+        }
+
+        .options .social-link:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px var(--shadow-dark);
+        }
+
         /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--nav-color);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -53,7 +150,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
+            background: var(--nav-color);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -77,6 +174,7 @@
             display: flex;
             list-style: none;
             gap: 1.5rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -99,7 +197,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: var(--primary-color);
+            background: var(--nav-color);
             transition: width 0.3s ease;
         }
 
@@ -119,7 +217,7 @@
         .mobile-menu span {
             width: 25px;
             height: 3px;
-            background: var(--text-primary);
+            background: var(--primary-color);
             margin: 3px 0;
             transition: 0.3s;
             border-radius: 2px;
@@ -143,7 +241,7 @@
             top: 80px;
             left: 0;
             right: 0;
-            background: white;
+            background: var(--nav-color);
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             padding: 2rem 1rem;
             list-style: none;
@@ -321,6 +419,10 @@
             background: var(--bg-light);
         }
 
+        .section:nth-child(odd) {
+            background: var(--bg-white);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -438,7 +540,7 @@
         .education-item {
             position: relative;
             margin-bottom: 2rem;
-            background: var(--bg-white);
+            background: var(--bg-light);
             padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -529,7 +631,7 @@
         }
 
         .project-card {
-            background: var(--bg-white);
+            background: var(--bg-light);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -627,7 +729,7 @@
 
         /* Experience Section */
         .experience-item {
-            background: var(--bg-white);
+            background: var(--bg-light);
             padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -648,7 +750,7 @@
         .experience-duration {
             color: var(--text-secondary);
             font-size: 0.8rem;
-            background: var(--bg-light);
+            background: var(--bg-white);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             display: inline-block;
@@ -694,7 +796,7 @@
         }
 
         .contact-form {
-            background: var(--bg-white);
+            background: var(--bg-light);
             padding: 1.5rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -736,7 +838,7 @@
 
         /* Footer */
         .footer {
-            background: var(--text-primary);
+            background: var(--accent-color);
             color: white;
             padding: 2rem 0 1rem;
         }
@@ -774,7 +876,7 @@
         }
 
         .social-link:hover, .social-link:active {
-            background: var(--accent-color);
+            background: var(--secondary-color);
             transform: translateY(-2px);
         }
 
@@ -842,7 +944,7 @@
         }
 
         .card {
-            background: rgb(114, 172, 226);
+            background: var(--card-color);
             padding: 2em;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -1318,6 +1420,44 @@
                 --text-secondary: #333333;
             }
         }
+
+        .checkbox {
+            opacity: 0;
+            position: absolute;
+            }
+
+            .checkbox-label {
+            background-color: var(--toggle-bg);
+            width: 50px;
+            height: 26px;
+            border-radius: 50px;
+            position: relative;
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            }
+
+            .fa-moon {color: #f1c40f;}
+
+            .fa-sun {color: #f0990c;}
+
+            .checkbox-label .ball {
+            background-color: #fff;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            border-radius: 50%;
+            transition: transform 0.2s linear;
+            }
+
+            .checkbox:checked + .checkbox-label .ball {
+            transform: translateX(24px);
+            }
+
     </style>
 </head>
 <body>
@@ -1339,6 +1479,14 @@
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <div>
+                    <input type="checkbox" class="checkbox" id="checkbox">
+                    <label for="checkbox" class="checkbox-label" title="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="ball"></span>
+                    </label>
+                </div>
             </ul>
             <div class="mobile-menu" id="mobileMenuBtn">
                 <span></span>
@@ -1354,6 +1502,14 @@
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li style="justify-items: center;">
+                    <input type="checkbox" class="checkbox" id="checkbox-mobile">
+                    <label for="checkbox-mobile" class="checkbox-label" title="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="ball"></span>
+                    </label>
+                </li>
             </ul>
         </div>
     </nav>
@@ -1403,7 +1559,7 @@
             <img src="photo1.jpg" alt="Soumodip Ghosh" class="hero-image">
             <h1>Soumodip Ghosh</h1>
             <p class="subtitle">B.Tech CSE Student</p>
-            <p class="subtitle animate-type" style="font-family: monospace; color:var(--bg-light);" id="subtitle-type"></p>
+            <p class="subtitle animate-type" style="font-family: monospace; color:white;" id="subtitle-type"></p>
             <p class="description">Passionate about AI, ML, and Geospatial Technologies with strong leadership skills and a drive for innovation</p>
             <div class="cta-buttons">
                 <a href="#about" class="btn btn-primary">
@@ -1419,6 +1575,27 @@
                     View Resume
                 </a>
             </div>
+            <p style="color: white; text-align: center; font-size: large; margin-top: 3rem;">&lt; My Tech Profiles &gt;</p>
+            <div class="social-links" style="justify-content: center; margin-top: 2rem;">
+                    <a href="https://g.dev/MrSoumodipGhosh" target="_blank" class="social-link" title="Google Developer Account">
+                        <i style="font-weight: bolder;">&lt;&gt;</i>
+                    </a>
+                    <a href="https://www.cloudskillsboost.google/public_profiles/4ba6eb5a-b4d3-4c09-8753-a1390823b152" target="_blank" class="social-link" title="Google Cloud Skills Boost">
+                        <i class="fa-solid fa-cloud"></i>
+                    </a>
+                    <a href="https://www.credly.com/users/soumodipghosh" class="social-link" target="_blank" title="Credly">
+                        <i style="font-family:'footlight mt light'; font-size: xx-large;">c</i>
+                    </a>
+                    <a href="https://github.com/soumodip-ghosh" target="_blank" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/soumodip-ghosh/" class="social-link" target="_blank" title="LeetCode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#fff" d="M13.483 0a1.37 1.37 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.3 5.3 0 0 0-1.209 2.104a5 5 0 0 0-.125.513a5.5 5.5 0 0 0 .062 2.362a6 6 0 0 0 .349 1.017a5.9 5.9 0 0 0 1.271 1.818l4.277 4.193l.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.38 1.38 0 0 0-1.951-.003l-2.396 2.392a3.02 3.02 0 0 1-4.205.038l-.02-.019l-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.7 2.7 0 0 1 .066-.523a2.55 2.55 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0m-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382a1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382a1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/soumodipghosh" target="_blank" class="social-link" title="HackerRank">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+            </div>
         </div>
         </div>
     </section>
@@ -1432,10 +1609,10 @@
                     <img src="photo2.jpg" alt="Soumodip Ghosh">
                 </div>
                 <div class="about-text div1">
-                    <h3 style="color: rgb(5, 70, 132);">Hello! I'm Soumodip</h3>
-                    <p style="color: black;"> I'm a motivated Computer Science & Engineering student with a strong foundation in programming and a keen interest in cutting-edge technologies. Currently pursuing B.Tech at MCKV Institute of Engineering, I combine academic excellence with practical experience.</p>
-                    <p style="color: black;"> As the COO of Chitrakalpa, a digital marketing agency, I've developed strong leadership and communication skills while managing operations and driving growth. My passion lies in AI, Machine Learning, and Geospatial technologies, where I see immense potential for solving real-world problems.</p>
-                    <p style="color: black;"> I believe in continuous learning and have consistently demonstrated this through my academic achievements, certifications, and project work. I'm always eager to take on new challenges and contribute to innovative solutions.</p>
+                    <h3 style="color: var(--accent-color);">Hello! I'm Soumodip</h3>
+                    <p style="color: var(--text-black);"> I'm a motivated Computer Science & Engineering student with a strong foundation in programming and a keen interest in cutting-edge technologies. Currently pursuing B.Tech at MCKV Institute of Engineering, I combine academic excellence with practical experience.</p>
+                    <p style="color: var(--text-black);"> As the COO of Chitrakalpa, a digital marketing agency, I've developed strong leadership and communication skills while managing operations and driving growth. My passion lies in AI, Machine Learning, and Geospatial technologies, where I see immense potential for solving real-world problems.</p>
+                    <p style="color: var(--text-black);"> I believe in continuous learning and have consistently demonstrated this through my academic achievements, certifications, and project work. I'm always eager to take on new challenges and contribute to innovative solutions.</p>
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-number">8.2</div>
@@ -1894,7 +2071,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Soumodip Ghosh. All rights reserved. Built with passion and dedication.</p>
+                <p>&copy; 2025 Soumodip Ghosh. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1904,6 +2081,24 @@
         <div class="resume-content">
             <span class="close-btn" onclick="closeResume()" title="Close">&times;</span>
             <iframe src="myresume.pdf" title="Soumodip Ghosh - Resume"></iframe>
+        </div>
+    </div>
+    
+    <!-- Message Button -->
+     <div class="contact-container">
+        <button class="contact-button" id="messageBtn" aria-label="Message options" title="Message Me !">
+            <i class="fas fa-message"></i>
+        </button>
+        <div class="options" id="messageOptions">
+            <a href="https://ig.me/m/mr.soumodip.ghosh" target="_blank" aria-label="Instagram" class="social-link" title="on Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://m.me/MrSoumodipGhosh" target="_blank" aria-label="Facebook Messenger" class="social-link" title="on Messenger">
+                <i class="fab fa-facebook-messenger"></i>
+            </a>
+            <a href="https://t.me/MrSoumodipGhosh" target="_blank" aria-label="Telegram" class="social-link" title="on Telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
         </div>
     </div>
 
@@ -2135,7 +2330,7 @@
 
         // Update copyright year
         document.querySelector('.footer-bottom p').innerHTML = 
-            `&copy; ${new Date().getFullYear()} Soumodip Ghosh. All rights reserved. Built with passion and dedication.`;
+            `&copy; ${new Date().getFullYear()} Soumodip Ghosh. All rights reserved.`;
 
         // Accessibility improvements
         document.addEventListener('keydown', function(e) {
@@ -2177,6 +2372,79 @@
                 ticking = true;
             }
         });
+
+        // Theme toggle functionality
+        const checkbox = document.getElementById("checkbox");
+        const checkboxMobile = document.getElementById("checkbox-mobile");
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                if (checkbox) checkbox.checked = true;
+                if (checkboxMobile) checkboxMobile.checked = true;
+            }
+        });
+
+        // Function to toggle theme
+        function toggleTheme(isDark) {
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            // Sync both checkboxes
+            if (checkbox) checkbox.checked = isDark;
+            if (checkboxMobile) checkboxMobile.checked = isDark;
+        }
+
+        // Add event listeners to both checkboxes
+        if (checkbox) {
+            checkbox.addEventListener("change", () => {
+                toggleTheme(checkbox.checked);
+            });
+        }
+
+        if (checkboxMobile) {
+            checkboxMobile.addEventListener("change", () => {
+                toggleTheme(checkboxMobile.checked);
+            });
+        }
+
+        // FIXED: Message Me Button functionality
+        const messageBtn = document.getElementById('messageBtn');
+        const messageOptions = document.getElementById('messageOptions');
+        let isOptionsOpen = false;
+
+        function toggleMessageOptions() {
+            isOptionsOpen = !isOptionsOpen;
+            
+            if (isOptionsOpen) {
+                messageOptions.classList.add('show');
+                messageBtn.classList.add('active');
+                messageBtn.querySelector('i').className = 'fas fa-times';
+            } else {
+                messageOptions.classList.remove('show');
+                messageBtn.classList.remove('active');
+                messageBtn.querySelector('i').className = 'fas fa-message';
+            }
+        }
+
+        messageBtn.addEventListener('click', toggleMessageOptions);
+
+        // Close options when clicking elsewhere
+        document.addEventListener('click', function(event) {
+            if (!messageBtn.contains(event.target) && !messageOptions.contains(event.target)) {
+                if (isOptionsOpen) {
+                    toggleMessageOptions();
+                }
+            }
+        });
+
     </script>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
     <script>
