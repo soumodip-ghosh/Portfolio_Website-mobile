@@ -1,6 +1,6 @@
 # Soumodip Ghosh - Portfolio Website
 
-A modern, responsive portfolio website showcasing skills, projects, and achievements of a Computer Science & Engineering student.
+A modern, responsive portfolio website showcasing skills, projects, and achievements.
 
 ## 🌟 Features
 
@@ -30,16 +30,6 @@ A modern, responsive portfolio website showcasing skills, projects, and achievem
 - **Certifications** - Academic and professional certificates
 - **Contact** - Multiple ways to connect
 
-## 🚀 Quick Start
-
-1. Clone or download the repository
-2. Ensure all assets are in place:
-   - `photo1.jpg` (hero image)
-   - `photo2.jpg` (about section image)
-   - `myresume.pdf` (resume file)
-   - `icon.ico` (favicon)
-3. Open `soumodip-portfolio.html` in a web browser
-
 ## 📄 File Structure
 
 ```
@@ -50,13 +40,6 @@ portfolio/
 ├── myresume.pdf              # Resume PDF
 └── icon.ico                  # Website favicon
 ```
-
-## 🎨 Customization
-
-- **Colors**: Modify CSS variables in `:root` section
-- **Content**: Update HTML content sections
-- **Images**: Replace image files with your own
-- **Links**: Update social media and project links
 
 ## 📞 Contact
 
